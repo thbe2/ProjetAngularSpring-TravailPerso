@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IpService } from '../ip.service';
 import { MainTemperature } from '../mainTemperature';
 import { WeatherService } from '../weather.service';
+import { MainVille } from '../mainVille';
 
 @Component({
   selector: 'app-show-weather',
@@ -14,6 +15,9 @@ export class ShowWeatherComponent {
   public main!: MainTemperature;
   public icon?: string;
   public description?: string;
+
+  public villes!: MainVille[];
+  public showResultsCity: Boolean=false;
 
   constructor(
     private weatherService: WeatherService,
@@ -66,4 +70,9 @@ export class ShowWeatherComponent {
       this.description = data.weather[0].description;
     });
   }
+
+  getCities() : void{
+    this.ipService.getCities().subscribe(villes  => this.villes=villes);
+  } 
+
 }

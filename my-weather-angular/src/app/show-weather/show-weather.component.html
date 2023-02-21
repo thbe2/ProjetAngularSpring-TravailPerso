@@ -18,3 +18,18 @@
     de {{ main.feelsLike }}°C.
   </p>
 </div>
+
+<div>
+<button type="button" (click)="getCities(); showResultsCity = true;">Voir l'ensemble des villes en base de donnée</button>
+<div *ngIf="showResultsCity">
+<a *ngFor="let ville of villes" >
+  <div>
+    <h3>{{ ville.city }}</h3>
+    <p>Pays : {{ ville.iso2 }}</p>
+    <p>coordonnées : {{ ville.lat }};{{ville.lng}}</p>
+    <a routerLink="/detail/{{ ville.city }}">
+      <span class="badge">Ensemble des relevés de température pour {{ ville.city }} </span> 
+    </a>
+  </div>
+</a>
+</div>
