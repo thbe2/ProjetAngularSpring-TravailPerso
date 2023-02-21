@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ShowIpComponent } from './show-ip/show-ip.component';
 import { ShowWeatherComponent } from './show-weather/show-weather.component';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
