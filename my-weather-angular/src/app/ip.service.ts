@@ -5,6 +5,7 @@ import { IpInfo } from './ipInfo';
 import { MainVille } from './mainVille';
 import { catchError, map, tap } from 'rxjs/operators';
 
+const headers ={headers: new HttpHeaders({ 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*' })};
 @Injectable({
   providedIn: 'root'
 })
@@ -14,12 +15,13 @@ export class IpService {
 
   constructor(private http: HttpClient) { }
 
-  getIpAdress(): Observable<any> {
-    return this.http.get('http://api.ipify.org/?format=json');
-  }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
+
+  getIpAdress(): Observable<any> {
+    return this.http.get('http://api.ipify.org/?format=json');
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

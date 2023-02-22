@@ -19,6 +19,7 @@ public class WorldCityService {
 	}
 
 	public WorldCity addCity(WorldCity city) {
+		System.out.println("Trying to add the following object into the database: "+ city);
 		return worldCityRepository.save(city);
 	}
 }
