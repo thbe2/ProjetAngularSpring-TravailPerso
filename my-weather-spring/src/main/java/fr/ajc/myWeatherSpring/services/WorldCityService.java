@@ -17,4 +17,8 @@ public class WorldCityService {
 	public List<WorldCity> getCities() {
 		return worldCityRepository.findAll();
 	}
+
+	public WorldCity addCity(WorldCity city) {
+		return worldCityRepository.save(city);
+	}
 }

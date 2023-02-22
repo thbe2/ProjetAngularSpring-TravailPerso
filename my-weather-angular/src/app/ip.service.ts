@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { IpInfo } from './ipInfo';
 import { MainVille } from './mainVille';
@@ -29,7 +29,7 @@ export class IpService {
       return of(result as T);
     };
   }
-  
+
   getIpInfo(ip: string): Observable<IpInfo> {
     return this.http.get<IpInfo>(
       `https://ipinfo.io/${ip}?token=${this.IP_INFO_TOKEN}`
@@ -38,8 +38,15 @@ export class IpService {
 
   // Méthode pour retourner tts les villes dans la bdd 
   getCities(): Observable<MainVille[]> {
-    return this.http.get<MainVille[]>(this.cityUrl+"/all").pipe(
+    return this.http.get<MainVille[]>(this.cityUrl + "/all").pipe(
       catchError(this.handleError<MainVille[]>('get cities', []))
+    );
+  }
+
+  /** POST: add a new City to the server */
+  addCity(data: MainVille): Observable<MainVille> {
+    return this.http.post<MainVille>(this.cityUrl + "/add", data, this.httpOptions).pipe(
+      catchError(this.handleError<MainVille>('add city'))
     );
   }
 }

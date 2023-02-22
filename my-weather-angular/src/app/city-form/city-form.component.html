@@ -1,0 +1,38 @@
+<h2> Ajout d'une Ville :</h2>
+<form [formGroup]="villeForm" (ngSubmit)="onSubmit()">
+    <label>
+      Nom de la ville :
+      <input type="text" formControlName="city">
+      <div *ngIf="villeForm.get('city')?.invalid && (villeForm.get('city')?.dirty || villeForm.get('city')?.touched)">
+        <div *ngIf="villeForm.get('city')?.errors">Ce champ est obligatoire.</div>
+      </div>
+    </label>
+  <br>
+    <label>
+      Latitude :
+      <input type="number" step="0.0001" formControlName="lat">
+      <div *ngIf="villeForm.get('lat')?.invalid && (villeForm.get('lat')?.dirty || villeForm.get('lat')?.touched)">
+        <div *ngIf="villeForm.get('lat')?.errors">Ce champ est obligatoire.</div>
+      </div>
+    </label>
+    <br>
+    <label>
+      Longitude :
+      <input type="number" step="0.0001" formControlName="lng">
+      <div *ngIf="villeForm.get('lng')?.invalid && (villeForm.get('lng')?.dirty || villeForm.get('lng')?.touched)">
+        <div *ngIf="villeForm.get('lng')?.errors">Ce champ est obligatoire.</div>
+      </div>
+    </label>
+    <br>
+    <label>
+      Code ISO-2 du Pays:
+      <input type="text" formControlName="iso2">
+      <div *ngIf="villeForm.get('iso2')?.invalid && (villeForm.get('iso2')?.dirty || villeForm.get('iso2')?.touched)">
+        <div *ngIf="villeForm.get('iso2')?.errors">Ce champ est obligatoire.</div>
+      </div>
+    </label>
+    <br>
+    <button type="submit" [disabled]="villeForm.invalid">Enregistrer</button>
+  </form>
+  <button routerLink="/">Retour à la page principale</button> 
+  

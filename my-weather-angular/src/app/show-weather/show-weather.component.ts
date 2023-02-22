@@ -16,6 +16,7 @@ export class ShowWeatherComponent {
   public icon?: string;
   public description?: string;
 
+  public ville!: MainVille;
   public villes!: MainVille[];
   public showResultsCity: Boolean=false;
 
@@ -71,6 +72,9 @@ export class ShowWeatherComponent {
     });
   }
 
+  savecity() : void {
+    this.ipService.addCity(this.ville).subscribe();
+  }
   getCities() : void{
     this.ipService.getCities().subscribe(villes  => this.villes=villes);
   } 
